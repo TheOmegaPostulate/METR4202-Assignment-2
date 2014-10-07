@@ -1,0 +1,36 @@
+%% Lab 2 solution using Projective Transform
+clc
+
+%% Constants
+scale = 0.5;
+first_time = 1;
+firstest_time = 1;
+diam_act = 907;
+conversion = diam_act/7;
+
+%% Calibration Image Manipulation
+I = imread('6.jpg');    % Read in the calibration image.
+
+% figure;                             % Create new figure.
+% imshow(I);                          % Display the image, debug only.
+
+I_scaled = imresize(I, scale);      % Scale image.
+I_gray = rgb2gray(I_scaled);        % Convert to grayscale.
+
+
+%% Create Transform
+if first_time
+    cpselect(I_gray, checkerboard);
+    input('Ready?');
+end
+
+tform = cp2tform(input_points, base_points, 'projective');
+
+%% Find Pixel to mm Conversion
+if firstest_time
+    I_tform = imtransform(I_gray, tform);%, 'XYScale', 0.2);  % Transform image.
+    conversion = find_conversion(I_tform, diam_act);
+end
+
+%% Find cups
+find_cups(I, tform, scale, conversion);
