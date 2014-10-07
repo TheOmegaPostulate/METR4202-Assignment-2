@@ -14,10 +14,13 @@ You also will need to set a scale if you wish to find circles of a given diamete
 Help
 -----------
 Q. MATLAB can't find my image, what's gone wrong?
+
 A. Chances are you have either made a mistake entering the image name, or have forgotten to add it to the MATLAB path.
 
 Q. How do I add my image to the MATLAB path?
+
 A. MathWorks has a lot of usful tutorials you can look at, including one on adding things to the path.  See: http://www.mathworks.com.au/help/matlab/ref/addpath.html.
 
 Q. I add the control points to my image, but can't get the corresponding ones on the checkerboard, what's up with that?
+
 A. You need to add sets of control points one by one (i.e. not all in one image, then all in the other).
